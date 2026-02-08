@@ -1,0 +1,6 @@
+
+{
+  "name": "Chemical Reaction Safety Checker",
+  "description": "An educational and household safety tool to check the dangers of mixing common chemicals using a rule-based engine and AI fallback.",
+  "requestFramePermissions": []
+}

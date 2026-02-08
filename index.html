@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Reaction Safety Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-main: #f0fdfa;
+        --card-bg: rgba(255, 255, 255, 0.1);
+        --primary: #0ea5e9;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --safe: #22c55e;
+        --mild: #3b82f6;
+        --exo: #f59e0b;
+        --danger: #ef4444;
+        --extreme: #991b1b;
+      }
+      body {
+        background-color: var(--bg-main);
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(160, 84%, 93%, 1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(188, 100%, 91%, 1) 0, transparent 50%), 
+          radial-gradient(at 100% 0%, hsla(200, 100%, 93%, 1) 0, transparent 50%),
+          url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        background-attachment: fixed;
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        min-height: 100vh;
+      }
+      /* Highly Pronounced Glassware Effect */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(50px) saturate(200%) contrast(110%);
+        -webkit-backdrop-filter: blur(50px) saturate(200%) contrast(110%);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 
+          0 20px 50px -10px rgba(0, 0, 0, 0.08),
+          inset 0 0 20px rgba(255, 255, 255, 0.5);
+      }
+      .glass-input {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .glass-input:focus {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+      }
+      .glass-dropdown {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.15);
+      }
+      .glass-btn {
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.7) 0%, rgba(16, 185, 129, 0.7) 100%);
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.3);
+        transition: all 0.3s ease;
+      }
+      .glass-btn:hover:not(:disabled) {
+        transform: translateY(-3px);
+        filter: brightness(1.1);
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+      .waves {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+        pointer-events: none;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+      .animate-float {
+        animation: float 5s ease-in-out infinite;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="waves">
+      <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <path fill="%23ccfbf1" fill-opacity="0.5" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,229.3C960,256,1056,256,1152,224C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
